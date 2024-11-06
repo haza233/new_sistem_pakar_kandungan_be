@@ -6,5 +6,4 @@ aptPkgs = ['git', 'unzip']
 cmds = ['composer install --no-dev', 'php artisan key:generate']
 
 [start]
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8081"]
-
+cmd = "php artisan serve --host=0.0.0.0 --port=$(echo $PORT | sed 's/[^0-9]*//g')"
