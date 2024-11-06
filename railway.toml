@@ -3,7 +3,7 @@ builder = "nixpacks"
 buildCommand = "composer install"
 
 [deploy]
-startCommand = "php", "artisan", "serve", "--host=0.0.0.0", "--port=8081"
+startCommand = "php artisan serve --host=0.0.0.0 --port=$8081"
 healthcheckPath = "/"
 healthcheckTimeout = 100
 
