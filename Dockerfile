@@ -33,6 +33,7 @@ RUN cp .env.example .env
 ENV APP_ENV=production
 ENV APP_DEBUG=false
 ENV APP_KEY=base64:PV1Qs3ZTBrO8aA6HXJSLBEPMKxfQNfOWIva00KiMZbY= 
+ENV APP_URL=mysql://root:NcsuZdbHVeXGOymzgxMcTkQhCTytUTeY@mysql.railway.internal:3306/railway
 
 # Variabel untuk database
 ENV DB_CONNECTION=mysql
