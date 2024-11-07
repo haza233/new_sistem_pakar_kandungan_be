@@ -23,17 +23,24 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /var/www
 
-# Salin file aplikasi Laravel
+# Salin semua file proyek Laravel ke dalam Docker container
 COPY . .
+
+# Salin file .env.example sebagai .env jika .env belum ada
+RUN cp .env.example .env
+
+# Bersihkan cache Laravel
+RUN php artisan config:clear
+RUN php artisan cache:clear
+RUN php artisan route:clear
+RUN php artisan view:clear
 
 # Install dependencies menggunakan Composer
 RUN composer install --no-dev --optimize-autoloader
 
 # Set permissions untuk direktori Laravel
 RUN chown -R www-data:www-data /var/www
-
-# Pastikan .env ada dan sudah disesuaikan
-# COPY .env.example .env
+RUN chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 
 # Generate Laravel app key jika diperlukan
 RUN php artisan key:generate
