@@ -29,6 +29,19 @@ COPY . .
 # Salin file .env.example sebagai .env jika .env belum ada
 RUN cp .env.example .env
 
+# Gantikan settingan environment variable agar dapat diatur dari luar container (seperti Railway)
+ENV APP_ENV=production
+ENV APP_DEBUG=false
+ENV APP_KEY=base64:PV1Qs3ZTBrO8aA6HXJSLBEPMKxfQNfOWIva00KiMZbY= 
+
+# Variabel untuk database
+ENV DB_CONNECTION=mysql
+ENV DB_HOST=mysql.railway.internal
+ENV DB_PORT=3306
+ENV DB_DATABASE=railway
+ENV DB_USERNAME=root
+ENV DB_PASSWORD=NcsuZdbHVeXGOymzgxMcTkQhCTytUTeY
+
 # Bersihkan cache Laravel
 RUN php artisan config:clear || true
 RUN php artisan cache:clear || true
