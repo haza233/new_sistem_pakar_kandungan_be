@@ -59,6 +59,7 @@
         }
     },
     "config": {
+        "app-url": "https://newsistempakarkandunganbe-production.up.railway.app/",
         "optimize-autoloader": true,
         "preferred-install": "dist",
         "sort-packages": true
