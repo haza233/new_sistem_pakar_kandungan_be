@@ -30,10 +30,10 @@ COPY . .
 RUN cp .env.example .env
 
 # Bersihkan cache Laravel
-RUN php artisan config:clear
-RUN php artisan cache:clear
-RUN php artisan route:clear
-RUN php artisan view:clear
+RUN php artisan config:clear || true
+RUN php artisan cache:clear || true
+RUN php artisan route:clear || true
+RUN php artisan view:clear || true
 
 # Install dependencies menggunakan Composer
 RUN composer install --no-dev --optimize-autoloader
@@ -43,7 +43,7 @@ RUN chown -R www-data:www-data /var/www
 RUN chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 
 # Generate Laravel app key jika diperlukan
-RUN php artisan key:generate
+RUN php artisan key:generate || true
 
 # Cache konfigurasi, route dan view untuk optimasi
 RUN php artisan config:cache
