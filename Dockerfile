@@ -37,11 +37,14 @@ ENV APP_URL=mysql://root:NcsuZdbHVeXGOymzgxMcTkQhCTytUTeY@mysql.railway.internal
 
 # Variabel untuk database
 ENV DB_CONNECTION=mysql
-ENV DB_HOST=mysql.railway.internal
-ENV DB_PORT=3306
+ENV DB_HOST=autorack.proxy.rlwy.net
+ENV DB_PORT=44195
 ENV DB_DATABASE=railway
 ENV DB_USERNAME=root
-ENV DB_PASSWORD=NcsuZdbHVeXGOymzgxMcTkQhCTytUTeY
+ENV DB_PASSWORD=enWIUwufsWxzPIDaGDdVNAJfQtLNSkUo
+
+
+
 
 # Bersihkan cache Laravel
 RUN php artisan config:clear || true
