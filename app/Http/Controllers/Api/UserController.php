@@ -49,7 +49,7 @@ class UserController extends Controller
             'nama' => 'required|string|max:100',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|min:6',
-            'role' => 'required|in:pasien,dokter'
+            'role' => 'required|in:pasien,dokter,admin'
         ]);
 
         if ($validator->fails()) {
@@ -71,7 +71,7 @@ class UserController extends Controller
             'nama' => 'sometimes|required|string|max:100',
             'email' => 'sometimes|required|email|unique:users,email,' . $id,
             'password' => 'sometimes|required|string|min:6',
-            'role' => 'sometimes|required|in:pasien,dokter'
+            'role' => 'sometimes|required|in:pasien,dokter,admin'
         ]);
 
         if ($validator->fails()) {

@@ -22,10 +22,9 @@ use App\Http\Controllers\Api\ConsultationController;
 Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->post('logout', [AuthController::class, 'logout']);
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware(['auth:sanctum', 'role:pasien,dokter'])->group(function () {
     Route::get('/user/{id}', [UserController::class, 'getUserById']);
     Route::apiResource('users', UserController::class);
     Route::apiResource('symptoms', SymptomController::class);
     Route::apiResource('diagnoses', DiagnosisController::class);
-    Route::apiResource('consultations', ConsultationController::class);
 });

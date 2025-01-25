@@ -1,18 +1,20 @@
 <?php
-// app/Models/Symptom.php  
+
+// app/Models/Disease.php  
   
 namespace App\Models;  
   
 use Illuminate\Database\Eloquent\Factories\HasFactory;  
 use Illuminate\Database\Eloquent\Model;  
   
-class Symptom extends Model  
+class Disease extends Model  
 {  
     use HasFactory;  
   
     protected $fillable = [  
         'name',  
         'description',  
+        'solution',  
     ];  
   
     public function rules()  
@@ -22,6 +24,6 @@ class Symptom extends Model
   
     public function diagnoses()  
     {  
-        return $this->belongsToMany(Diagnosis::class, 'diagnosis_symptoms');  
+        return $this->hasMany(Diagnosis::class);  
     }  
 }  
